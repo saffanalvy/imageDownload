@@ -16,6 +16,17 @@ class ImagePage extends StatelessWidget {
       appBar: AppBar(
         title: Text(file.name),
         centerTitle: true,
+        actions: [
+          IconButton(
+              icon: const Icon(Icons.file_download),
+              onPressed: () async {
+                await FirebaseApi.downloadFile(file.ref);
+
+                final snackBar =
+                    SnackBar(content: Text('Downloaded ${file.name}'));
+                ScaffoldMessenger.of(context).showSnackBar(snackBar);
+              })
+        ],
       ),
       body: Image.network(
         file.url,

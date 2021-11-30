@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:fileupload/model/firebase_file.dart';
@@ -23,5 +25,10 @@ class FirebaseApi {
         })
         .values
         .toList();
+  }
+
+  static Future downloadFile(Reference ref) async {
+    final file = File('/storage/emulated/0/Download/${ref.name}');
+    await ref.writeToFile(file);
   }
 }
