@@ -2,6 +2,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:fileupload/api/firebase_api.dart';
 import 'package:fileupload/model/firebase_file.dart';
+import 'package:fileupload/page/image_page.dart';
 
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -98,6 +99,9 @@ class _MyHomePageState extends State<MyHomePage> {
           color: Colors.blue,
         ),
       ),
+      onTap: () => Navigator.of(context).push(MaterialPageRoute(
+        builder: (context) => ImagePage(file: file),
+      )),
     );
   }
 
